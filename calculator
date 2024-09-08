@@ -1,0 +1,73 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        
+            </style>
+        </head>
+        <body>
+            <h1>Basic Calculator</h1>
+        
+            <p>I am using this to create a calculator that can solve your numerical problems!</p>
+        
+        
+            <form id="calculatorForm">
+                <p>Please enter the first number</p>
+                <input type="number" name="N1" id="N1" required>
+        
+                <p>Select operation</p>
+                <select name="operation" id="operation">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+        
+                <p>Please enter the second number</p>
+                <input type="number" name="N2" id="N2" required>
+        
+                <br>
+                <input type="submit" name="submit" value="Calculate">
+                <input type="button" name="clear" value="Clear" onclick="clearForm()">
+            </form>
+        
+            <p id="result"></p>
+        
+            <script>
+                document.getElementById('calculatorForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const n1 = parseFloat(document.getElementById('N1').value);
+                    const n2 = parseFloat(document.getElementById('N2').value);
+                    const operation = document.getElementById('operation').value;
+                    let result;
+        
+                    switch(operation) {
+                        case '+':
+                            result = n1 + n2;
+                            break;
+                        case '-':
+                            result = n1 - n2;
+                            break;
+                        case '*':
+                            result = n1 * n2;
+                            break;
+                        case '/':
+                            result = n1 / n2;
+                            break;
+                    }
+        
+                    document.getElementById('result').textContent = `Result: ${result}`;
+                });
+        
+                function clearForm() {
+                    document.getElementById('N1').value = '';
+                    document.getElementById('N2').value = '';
+                    document.getElementById('operation').selectedIndex = 0;
+                    document.getElementById('result').textContent = '';
+                }
+            </script>
+        </body>
+        </html>
+        
+        
